@@ -5,7 +5,7 @@
          {% element 'secondary_nav' %}
            {
              "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
-                             { "label":"{{ 'portal_translations.header.tabs.solutions' | t }}", "url":"{{portal.solutions_home_url}}" },
+                             { "label":"Technical Resources{% comment %}{{ 'portal_translations.header.tabs.solutions' | t }}{% endcomment %}", "url":"{{portal.solutions_home_url}}" },
                              { "label": "{{ category.name | escape_once }}", "url":"{{category.url}}" },
                              { "label": "{{ folder.name | escape_once }}", "url":"{{folder.url}}" }]
            }
@@ -33,6 +33,7 @@
       {% endcomment %}
         <div class="text-start">
           <h1 class="fw-page-title">{{ folder.name }} {% comment %}({{ folder.entity_collection.size}}){% endcomment %}</h1>
+          <img src="https://waikatomilking.com/themes/waikato/images/redesign/banner_line.svg" alt="" class="banner__line">
           <p>{{ folder.description }}</p>
         </div>
       </div>

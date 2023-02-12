@@ -5,7 +5,7 @@
           {% element 'secondary_nav' %}
            {
              "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
-                             { "label":"{{ 'portal_translations.header.tabs.solutions' | t }}", "url":"{{portal.solutions_home_url}}" }]
+                             { "label":"Technical Resources{% comment %}{{ 'portal_translations.header.tabs.solutions' | t }}{% endcomment %}", "url":"{{portal.solutions_home_url}}" }]
            }
           {% endelement %}
         </div>

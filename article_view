@@ -5,7 +5,7 @@
          {% element 'secondary_nav' %}
           {
            "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
-                           { "label":"{{ 'portal_translations.header.tabs.solutions' | t }}", "url":"{{ portal.solutions_home_url }}" },
+                           { "label":"Technical Resources{% comment %}{{ 'portal_translations.header.tabs.solutions' | t }}{% endcomment %}", "url":"{{portal.solutions_home_url}}" },
                            { "label": "{{ article.category.name | escape_once }}", "url":"{{ article.category.url }}" },
                            { "label": "{{ article.folder.name | escape_once }}", "url":"{{ article.folder.url }}" },
                            { "label": "{{ article.title | escape_once }}", "url":"{{ article.url }}" }]
@@ -21,12 +21,15 @@
   <section class="container-fluid px-0 fw-page-title-wrapper">
     <div class="container">
       <div class="py-24 py-lg-60 mx-0 fw-search-meta-info g-0">
+        {% comment %}
         <div class="fw-icon-holder pe-8">
           <span class="icon-article"></span>
         </div>
+        {% endcomment %}
         <div class="text-start">
           <h1 class="fw-page-title">{{ article.title }}</h1>
-          <p>{{ article | solution_author_info: 'article-detail' }}</p>
+          <img src="https://waikatomilking.com/themes/waikato/images/redesign/banner_line.svg" alt="" class="banner__line">
+          {% comment %}<p>{{ article | solution_author_info: 'article-detail' }}</p>{% endcomment %}
         </div>
       </div>
     </div>
