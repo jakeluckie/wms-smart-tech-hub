@@ -1,0 +1,33 @@
+{% if  portal.current_page != "csat_survey" %}
+ <footer class="container-fluid px-0">
+   {% comment %}
+   <div>
+       <div class="footer__branding">
+         <a href="/" class="footer__logo">
+           <img src="https://waikatomilking.com/themes/waikato/images/redesign/logo-white.svg" alt="Waikato Milking Systems" class="footer__logo--img">
+         </a>
+         <h2 class="h2 footer__tagline">Growing the value of dairy</h2>
+       </div>  
+     </div>
+   {% endcomment %}
+   
+   <section class="fw-contact-info">
+     
+     <p class="fw-contacts">
+       {{ portal | footer_contact_info }}
+     </p>
+   </section>
+   {% comment %}
+   <section class="fw-credit">
+     <nav class="fw-laws">
+        {{ portal | footer_cookie_law }}
+        {{ portal | footer_privacy_law }}
+        {{ portal | default_cookie_policy_settings }}
+     </nav>
+   </section>
+   {% endcomment %}
+ </footer>
+<script>
+jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
+</script>
+{% endif %}

@@ -1,0 +1,322 @@
+/*
+ * The Typekit service used to deliver this font or fonts for use on websites
+ * is provided by Adobe and is subject to these Terms of Use
+ * http://www.adobe.com/products/eulas/tou_typekit. For font license
+ * information, see the list below.
+ *
+ * neo-sans:
+ *   - http://typekit.com/eulas/00000000000000007735bb57
+ *   - http://typekit.com/eulas/00000000000000007735bb56
+ *   - http://typekit.com/eulas/00000000000000007735bb5f
+ *
+ * © 2009-2022 Adobe Systems Incorporated. All Rights Reserved.
+ */
+/*{"last_published":"2021-10-13 20:19:32 UTC"}*/
+
+@import url("https://p.typekit.net/p.css?s=1&k=udk8uuv&ht=tk&f=39475.39480.39482&a=82676490&app=typekit&e=css");
+
+@font-face {
+  font-family: "neo-sans";
+  src: url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "neo-sans";
+  src: url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: "neo-sans";
+  src: url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff2"),
+    url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("woff"),
+    url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
+      format("opentype");
+  font-display: auto;
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+}
+
+.tk-neo-sans {
+  font-family: "neo-sans", sans-serif;
+}
+
+body {
+  font: 400 16px/26px neo-sans, sans-serif !important;
+}
+.fw-helpcenter {
+  background: url(https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/WMS-006-02-23-Tech-Hub-Flipped-BANNER.jpg)
+    no-repeat center;
+}
+
+/* .fw-new-ticket-wrapper {
+  background: url(https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/27040501282/original/pI7Fn7NvXi9hhmCOdPl9CgGPMWQsxICzag.jpg?1672796668)
+    no-repeat center;
+} */
+
+.fw-page-title-wrapper {
+  background: url(https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/WMS-006-02-23-Tech-Hub-Flipped-BANNER.jpg)
+    no-repeat center;
+}
+
+.btn {
+  border: 1px solid #fa8700;
+  padding: 16px 30px 14px;
+  border-radius: 0;
+  text-transform: uppercase !important;
+}
+
+body .fw-secondary-button {
+  border-color: #fa8700;
+  background-color: white;
+  color: #fa8700;
+}
+
+body .fw-secondary-button:hover {
+  border-color: #fa8700;
+  background-color: #fa8700;
+  color: white;
+}
+
+@media (min-width: 1200px) {
+  .navbar .navbar-collapse .nav-item .nav-link {
+    text-transform: uppercase !important;
+  }
+}
+
+.navbar .navbar-collapse .nav-item .nav-link:hover {
+  color: #fa8700 !important;
+}
+
+.navbar .navbar-collapse .nav-item .nav-link {
+  color: #4a4a4a;
+}
+
+.navbar .fw-brand-logo {
+  max-width: 16em;
+  height: 3rem;
+}
+
+/* =========================================================== */
+/* Secondary Nav Styles -------------------------------------- */
+/* =========================================================== */
+.fw-searchbar-wrapper {
+  background-color: #373535;
+  color: white;
+}
+
+.fw-searchbar-wrapper .breadcrumb a {
+  color: white;
+  text-decoration: underline;
+}
+
+.fw-searchbar-wrapper .breadcrumb .breadcrumb-item:before {
+  content: "";
+  background: url(https://waikatomilking.com/themes/waikato/images/redesign/icons/breadcrumbs-arrow-white.svg);
+  background-repeat: no-repeat;
+  font-size: .5rem;
+  transform: none;
+  padding: 0 6px 0 10px;
+  line-height: 0;
+  width: 0;
+  height: 0.75rem;
+  margin-top: 0.6rem;
+  opacity: 1; 
+  color: white;
+}
+
+@media (min-width: 768px) {
+  .navbar .fw-brand-logo {
+    max-width: 20rem;
+  }
+}
+
+li#ticket-btn {
+  margin-left: 15px;
+}
+
+@media (min-width: 1200px) {
+  .pt-xl-4 {
+    padding-top: 0.25rem !important;
+    padding-bottom: 0.25rem !important;
+  }
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font: 700 44px/56px neo-sans, sans-serif;
+  text-transform: uppercase;
+}
+
+.fw-helpcenter,
+.fw-helpcenter .h1,
+.fw-helpcenter h1 {
+  margin-bottom: 0.5em;
+}
+
+.fw-helpcenter,
+.fw-helpcenter .h1,
+.fw-helpcenter h1 {
+  font-weight: 500;
+  color: white;
+}
+
+.fw-page-title-wrapper .fw-search-meta-info h1 {
+  color: #ffffff;
+}
+
+.banner__line {
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  #portal-card-container {
+    width: 49%;
+  }
+}
+
+.card {
+  border-radius: 0;
+}
+
+.card-body {
+  flex: 0;
+}
+
+.card.fw-horizontal .card-title {
+  line-height: 1.5;
+}
+
+.card .card-title {
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.card.fw-horizontal {
+  flex-direction: column;
+  text-align: center;
+  border-radius: 0;
+  padding: 2rem 1rem 2rem 1rem;
+}
+
+.card.fw-horizontal .card-body {
+  padding: 0;
+}
+
+.card.fw-horizontal .fw-category-icon {
+  width: 6.2rem;
+  margin: 0 auto 0 auto;
+}
+
+.card-icon-div {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  width: 50%;
+}
+
+#home-text-container {
+  margin: 25px auto 0 auto;
+  width: 90%;
+}
+
+@media (min-width: 768px) {
+  #home-text-container {
+    margin: 35px auto 0 auto;
+    width: 70%;
+  }
+}
+
+.page-title-desc {
+  color: #4a4a4a;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.page-desc-copy {
+  font-weight: 300;
+  color: #4a4a4a;
+}
+
+#searchInput {
+  border: 0px;
+}
+
+.fw-search button,
+.fw-search button:hover {
+  background-color: #ffffff;
+  border: 0px solid #b1bdc8;
+}
+
+.icon-search:before {
+  color: #fa8701;
+}
+
+footer .fw-contact-info .fw-contacts {
+  margin-top: 0;
+}
+
+footer .fw-contact-info {
+  opacity: 1;
+}
+
+.card .card-divider--top {
+  height: 12px;
+  width: 60px;
+  border-bottom: 1px solid #aaa;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.card .card-divider--bottom {
+  width: 200px;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 20px;
+}
+
+.card-hover-line:hover > .card-divider--top{
+  width:200px;
+}
+
+.d-hotline {
+  background-color: #fa8700 !important;
+  color: #FFFFFF !important;
+  border-color: transparent #fa8700 transparent transparent;
+}
+
+#chat-icon::before, #chat-icon::after {
+  background-color: #fa8700 !important;
+}
+
+.d-hotline.h-btn:focus {
+  outline: 0;
+}
