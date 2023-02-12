@@ -20,6 +20,7 @@
   <section class="container-fluid px-0 fw-page-title-wrapper">
     <div class="container">
       <div class="py-24 py-lg-60 mx-0 fw-search-meta-info g-0">
+      {% comment %}
         {% if folder.icon %}
           <div class="fw-fig">
             <img src="{{folder.icon}}" class="img-fluid" alt="category image">
@@ -29,8 +30,9 @@
             <span class="icon-folder"></span>
           </div>
         {% endif %}
+      {% endcomment %}
         <div class="text-start">
-          <h1 class="fw-page-title">{{ folder.name }} ({{ folder.entity_collection.size}})</h1>
+          <h1 class="fw-page-title">{{ folder.name }} {% comment %}({{ folder.entity_collection.size}}){% endcomment %}</h1>
           <p>{{ folder.description }}</p>
         </div>
       </div>
@@ -40,7 +42,7 @@
   <section class="container-fluid px-0 py-24">
     <div class="container">
       {{ page_message }}
-        {% paginate folder.entity_collection by 10 %}
+        {% paginate folder.entity_collection by 500 %}
           <section class="row fw-category-wrapper box-shadow br-12 mx-0 g-0 bg-light">
             <ul class="fw-no-bullet fw-articles fw-section-content">
               {% for entity in paginate.collection %}
