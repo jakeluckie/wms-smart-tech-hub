@@ -42,11 +42,17 @@
         <div class="col-lg-9 fw-content-wrapper mb-16 mb-lg-0">
           <div class="fw-content fw-content--single-article line-numbers">
             {{ article.body }}
-            {{ article | attachments }}
+            {{ article | attachments }}            
+            {% for attachment in article.attachments %}
+            <a href="{{ attachment.url }}" target="_parent">
+                <p>{{ attachment.filename }}</p>
+            </a>
+            {% endfor %}
+
           </div>
           {{ article | solution_article_feedback }}
         </div>
-
+        {% comment %}
         <div class="col-lg-3 fw-sidebar-wrapper">
           <aside class="bg-grey fw-sidebar">
             <div class="print mb-20">
@@ -90,6 +96,7 @@
             {% endif %}
           </aside>
         </div>
+        {% endcomment %}
       </div>
     </div>
   </section>

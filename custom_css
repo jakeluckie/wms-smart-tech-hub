@@ -320,3 +320,11 @@ footer .fw-contact-info {
 .d-hotline.h-btn:focus {
   outline: 0;
 }
+
+.fw-searchbar-wrapper .breadcrumb .breadcrumb-item {
+  max-width: 12rem;
+}
+
+.fw-searchbar-wrapper .breadcrumb .breadcrumb-item .dropdown-toggle {
+  color: white;
+}
