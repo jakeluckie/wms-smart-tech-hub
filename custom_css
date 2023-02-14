@@ -17,12 +17,9 @@
 
 @font-face {
   font-family: "neo-sans";
-  src: url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-      format("woff2"),
-    url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-      format("woff"),
-    url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3")
-      format("opentype");
+  src: url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff2"),
+    url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("woff"),
+    url("https://use.typekit.net/af/b07eb4/00000000000000007735bb57/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n7&v=3") format("opentype");
   font-display: auto;
   font-style: normal;
   font-weight: 700;
@@ -31,12 +28,9 @@
 
 @font-face {
   font-family: "neo-sans";
-  src: url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-      format("woff2"),
-    url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-      format("woff"),
-    url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3")
-      format("opentype");
+  src: url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff2"),
+    url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("woff"),
+    url("https://use.typekit.net/af/fde5b4/00000000000000007735bb56/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n5&v=3") format("opentype");
   font-display: auto;
   font-style: normal;
   font-weight: 500;
@@ -45,12 +39,9 @@
 
 @font-face {
   font-family: "neo-sans";
-  src: url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-      format("woff2"),
-    url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-      format("woff"),
-    url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3")
-      format("opentype");
+  src: url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/l?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff2"),
+    url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/d?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("woff"),
+    url("https://use.typekit.net/af/b34fab/00000000000000007735bb5f/30/a?primer=7cdcb44be4a7db8877ffa5c0007b8dd865b3bbc383831fe2ea177f62257a9191&fvd=n4&v=3") format("opentype");
   font-display: auto;
   font-style: normal;
   font-weight: 400;
@@ -63,10 +54,17 @@
 
 body {
   font: 400 16px/26px neo-sans, sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
 }
+
+.mb16 {
+  margin-bottom: 0 !important;
+}
+
 .fw-helpcenter {
-  background: url(https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/WMS-006-02-23-Tech-Hub-Flipped-BANNER.jpg)
-    no-repeat center;
+  background: url(https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/WMS-006-02-23-Tech-Hub-Flipped-BANNER.jpg) no-repeat center;
 }
 
 /* .fw-new-ticket-wrapper {
@@ -75,8 +73,7 @@ body {
 } */
 
 .fw-page-title-wrapper {
-  background: url(https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/WMS-006-02-23-Tech-Hub-Flipped-BANNER.jpg)
-    no-repeat center;
+  background: url(https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/WMS-006-02-23-Tech-Hub-Flipped-BANNER.jpg) no-repeat center;
 }
 
 .btn {
@@ -98,6 +95,24 @@ body .fw-secondary-button:hover {
   color: white;
 }
 
+.fw-wrapper-shadow .fw-content-wrapper {
+  box-shadow: none;
+  border: 0px;
+  border-radius: 0px;
+}
+
+@media (min-width: 992px) {
+  .fw-wrapper-shadow {
+    box-shadow: none;
+    border: 0px;
+    border-radius: 0px;
+  }
+}
+
+.fw-wrapper-shadow .fw-content {
+  margin: 1.5rem 1.5rem;
+}
+
 @media (min-width: 1200px) {
   .navbar .navbar-collapse .nav-item .nav-link {
     text-transform: uppercase !important;
@@ -113,8 +128,14 @@ body .fw-secondary-button:hover {
 }
 
 .navbar .fw-brand-logo {
-  max-width: 16em;
+  max-width: 12rem;
   height: 3rem;
+}
+
+@media (min-width: 768px) {
+  .navbar .fw-brand-logo {
+    max-width: 20rem;
+  }
 }
 
 /* =========================================================== */
@@ -141,14 +162,8 @@ body .fw-secondary-button:hover {
   width: 0;
   height: 0.75rem;
   margin-top: 0.6rem;
-  opacity: 1; 
+  opacity: 1;
   color: white;
-}
-
-@media (min-width: 768px) {
-  .navbar .fw-brand-logo {
-    max-width: 20rem;
-  }
 }
 
 li#ticket-btn {
@@ -191,15 +206,31 @@ h6 {
   color: white;
 }
 
+.text-start {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.7rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
 .fw-page-title-wrapper .fw-search-meta-info h1 {
   color: #ffffff;
+  font-weight: 500;
+  font-size: 33px;
+  text-transform: none;
 }
 
 .banner__line {
-  max-width: 100%;
+  margin-right: auto;
+  width: 400px;
 }
 
 @media (min-width: 768px) {
+  .fw-page-title-wrapper .fw-search-meta-info h1 {
+    font-size: 46px;
+  }
+
   #portal-card-container {
     width: 49%;
   }
@@ -303,8 +334,8 @@ footer .fw-contact-info {
   margin-bottom: 20px;
 }
 
-.card-hover-line:hover > .card-divider--top{
-  width:200px;
+.card-hover-line:hover>.card-divider--top {
+  width: 200px;
 }
 
 .d-hotline {
@@ -313,7 +344,8 @@ footer .fw-contact-info {
   border-color: transparent #fa8700 transparent transparent;
 }
 
-#chat-icon::before, #chat-icon::after {
+#chat-icon::before,
+#chat-icon::after {
   background-color: #fa8700 !important;
 }
 
@@ -327,4 +359,134 @@ footer .fw-contact-info {
 
 .fw-searchbar-wrapper .breadcrumb .breadcrumb-item .dropdown-toggle {
   color: white;
+}
+
+/* ================================================================ */
+/* Article Attachment Styles -------------------------------------- */
+/* ================================================================ */
+
+.documentwrapper {
+  border-left: 1px solid #000;
+  padding-left: 20px;
+  margin: 3rem 0 1.7rem 0 !important;
+}
+
+.documenttitle {
+  letter-spacing: .2px;
+  color: #4a4a4a !important;
+  font: 700 28px/38px neo-sans, sans-serif !important;
+}
+
+.filedownload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #f4f6f6;
+}
+
+.filedownloaddetails {
+  display: flex;
+  padding: 15px 25px;
+  width: 100%;
+  -webkit-box-flex: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.filedownloadtitle {
+  font-size: 14px !important;
+  overflow-wrap: anywhere;
+  text-transform: unset;
+  letter-spacing: 1.5px;
+  color: #4a4a4a !important;
+  font: 400 19px/26px neo-sans, sans-serif;
+}
+
+.downloadsize {
+  display: none;
+}
+
+.downloadbtn {
+  align-items: center;
+  background-color: #fa8701;
+  display: flex;
+  padding: 1rem 2rem;
+  justify-content: center;
+}
+
+.downloadbtn p {
+  color: white !important;
+  text-transform: uppercase;
+  font-size: 14px !important;
+}
+
+@media (min-width: 768px) {
+  .filedownload {
+    flex-direction: row;
+  }
+
+  .filedownloaddetails {
+    width: 8rem;
+  }
+
+  .downloadsize {
+    font-size: 16px !important;
+    text-transform: uppercase;
+    font-weight: 400;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    text-align: center;
+    align-items: center;
+    margin-right: 20px !important;
+  }
+
+  .downloadsize>span {
+    width: 4rem;
+    font-weight: 400;
+
+  }
+
+  .filedownloadtitle {
+    font-size: 16px !important;
+  }
+
+  .downloadbtn p {
+    font-size: 16px !important;
+  }
+
+}
+
+@media (min-width: 992px) {
+  .col-lg-9 {
+    width: 100%;
+  }
+}
+
+.linkwrap {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 1rem !important;
+
+}
+
+.downloadbtn img {
+  margin-left: 10px;
+}
+
+.choices.form-select:focus, .choices.is-focused, .choices:focus {
+  border-color: #fa8700;
+}
+
+.form-control:focus {
+  color: #4a4a4a;
+  border-color: #fa8700;
 }
