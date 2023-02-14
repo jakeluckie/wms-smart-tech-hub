@@ -45,9 +45,13 @@
             {% comment %}   
             {{ article | attachments }}    
             {% endcomment %}
+
+            {% if article.attachments.size > 0 %}
             <div class="documentwrapper">
             <h2 class="documenttitle">Documents</h2>
             </div>
+            {% endif %}
+
             {% for attachment in article.attachments %}
             <a href="{{ attachment.url }}" download="{{ attachment.filename }}" class="linkwrap" alt="">
             <div class="filedownload">
