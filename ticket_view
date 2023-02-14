@@ -24,6 +24,7 @@
         </div>
         <div class="text-start">
           <h1 class="fw-page-title">{{ ticket.subject }} #{{ ticket.id }}</h1>
+          <img src="https://waikatomilking.com/themes/waikato/images/redesign/banner_line.svg" alt="" class="banner__line">
           <p>{{ 'portal_translations.created_on' | t}} {{ ticket.created_on | date: "%a, %d %b %Y"}} {{ 'portal_translations.at' | t}} {{ ticket.created_on | date:  "%I:%M %p"}} - via {{ticket.source_name}}</p>
         </div>
       </div>

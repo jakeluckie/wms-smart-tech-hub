@@ -482,6 +482,22 @@ footer .fw-contact-info {
   margin-left: 10px;
 }
 
+.form-select {
+  border-radius: 0;
+}
+
+.form-control {
+  border-radius: 0;
+}
+
+.fr-box .fr-toolbar.fr-top {
+  border-radius: 0;
+}
+
+.fr-box.fr-basic.fr-top .fr-wrapper {
+  border-radius: 0;
+}
+
 .choices.form-select:focus, .choices.is-focused, .choices:focus {
   border-color: #fa8700;
 }
@@ -489,4 +505,16 @@ footer .fw-contact-info {
 .form-control:focus {
   color: #4a4a4a;
   border-color: #fa8700;
+}
+
+.choices__list--dropdown {
+  border: 1px solid #fa8700;
+  border-radius: 0;
+  box-shadow: none;
+  border-top: 0;
+}
+
+.choices.is-flipped .choices__list--dropdown {
+  border-top: 1px solid #fa8700;
+  border-radius: 0;
 }
