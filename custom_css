@@ -318,6 +318,7 @@ footer .fw-contact-info .fw-contacts {
 
 footer .fw-contact-info {
   opacity: 1;
+  background-color: #373535;
 }
 
 .card .card-divider--top {
@@ -498,7 +499,9 @@ footer .fw-contact-info {
   border-radius: 0;
 }
 
-.choices.form-select:focus, .choices.is-focused, .choices:focus {
+.choices.form-select:focus,
+.choices.is-focused,
+.choices:focus {
   border-color: #fa8700;
 }
 
@@ -517,4 +520,115 @@ footer .fw-contact-info {
 .choices.is-flipped .choices__list--dropdown {
   border-top: 1px solid #fa8700;
   border-radius: 0;
+}
+
+.fw-loginform-wrapper .fw-form-section .form {
+  border-radius: 0;
+}
+
+.fw-content.fw-content--single-article p {
+  font-size: 16px;
+}
+
+.fw-content.fw-content--single-article.line-numbers p span[style] {
+  font-size: 16px;
+  font-family: neo-sans, helvetica, arial, sans-serif !important;
+}
+
+span[style] {
+  font-family: neo-sans, helvetica, arial, sans-serif !important;
+  color: #4a4a4a;
+  font-size: 16px;
+}
+
+p[style] {
+  font-family: neo-sans, helvetica, arial, sans-serif !important;
+  color: #4a4a4a;
+  font-size: 16px;
+}
+
+/* ================================================================ */
+/* Solutions Home Styles------------------------------------------- */
+/* ================================================================ */
+.category-section-wrapper {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+}
+
+.section-heading-container {
+  display:flex;
+  flex-wrap: wrap;
+}
+
+.category-title-wrapper {
+  border-left: 1px solid #000;
+  padding-left: 15px;
+  margin: 0 0 1.7rem 0 !important;
+}
+
+
+.category-title {
+  letter-spacing: .2px;
+  color: #4a4a4a !important;
+  font: 700 28px/38px neo-sans, sans-serif !important;
+  text-transform: unset;
+}
+
+.folder-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.folder-wrapper-single {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #d4d4d4;
+  padding-bottom: .5rem;
+  margin-bottom: 1rem;
+}
+
+.folder-title {
+  font: 400 20px neo-sans, sans-serif !important;
+  text-transform: unset;
+}
+
+.article-results-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-result {
+  display: flex;
+  flex-direction: row;
+}
+
+.article-result-hidden {
+  display: none;
+  flex-direction: row;
+}
+
+@keyframes fadeIn {
+  from { 
+    display: none;
+    opacity: 0;
+  }
+  to {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+.result-arrow {
+  padding-right:.2rem;
+}
+
+.view-all-results-btn a {
+  max-width: 7rem;
+  text-align: center;
+  margin-top: 0.7rem;
+  padding: .2rem .8rem;
+  display: block;
+  border: 1px solid #fa8700;
+  background-color: white;
+  color: #fa8700;
 }

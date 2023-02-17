@@ -94,9 +94,56 @@
                   </div>
                 {% endif %}
               {% endfor %}
-            </div>
+            </div>  
           </section>
         {% endif %}
       {% endfor %}
+    </div>
+
+    <div class="container">
+        {% for category in portal.solution_categories %}
+          {% if category.name == 'Animal Management' %}
+            <section class="row category-section-wrapper mx-0 g-0 bg-light">
+              <div class="section-heading-container">
+                <div class="category-title-wrapper"> 
+                  <h4 class="category-title">{{ category.name | escape_once }}</h4>
+                </div>
+              </div>
+              <div class="folder-container">
+                {% for folder in category.folders %}
+                  {% if folder.entity_collection.size > 0 %}
+                    <div class="folder-wrapper-single">
+                      <div class="folder-title-div">
+                        <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
+                      </div>
+                      
+                      <div id="article-results-id" class="article-results-wrapper">
+                        {% assign article_count = 0 %}
+                        {% for entity in folder.entity_collection %}
+                        {% assign article_count = article_count | plus:1 %}
+                          {% if article_count < 3 %}
+                            {% assign article_class = "article-result" %}
+                          {% elsif article_count > 3%}
+                            {% assign article_class = "article-result-hidden" %}
+                          {% endif %}
+                          <div class="{{ article_class }}">
+                            <span class="result-arrow">></span>
+                            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
+                          </div>
+                        {% endfor %}
+                        {% assign article_count = 0 %}
+                        {% if folder.entity_collection.size > 3 %}
+                          <div class="view-all-results-btn">
+                            <a href="javascript: showAllResults()">View All ({{folder.entity_collection.size}})</a>
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
+        {% endfor %}
     </div>
   </section>

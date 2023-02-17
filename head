@@ -10,4 +10,27 @@
 <script
   src="https://code.jquery.com/jquery-3.6.3.min.js"
   integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-  crossorigin="anonymous"></script>
+  crossorigin="anonymous">
+</script>
+<script>
+  function showAllResults(y) {
+    if (y === undefined) {
+      y = 1;
+    }
+    var x = document.getElementById('article-results-id').getElementsByClassName('article-result-hidden');
+    alert(x);
+    if (x.style.display === 'flex') {
+      x.style.display = 'none';
+    } else {
+      x.style.display = 'flex';
+       x.style.animation = 'fadeIn 200ms ease-in-out';
+    }
+  }  
+</script>
+<script>
+  $(document).ready(function(){
+  $(".view-all-results-btn").click(function(){
+    $(".article-result-hidden").css('display', 'flex');
+  });
+});
+</script>
