@@ -104,8 +104,7 @@
         {% assign visible_folder_count = 0 %}
         {% assign hidden_folder_count = 0 %}
         {% for category in portal.solution_categories %}
-          {% if category.name == 'Animal Management' or category.name == 'General Components' %}
-          {% assign folder_count = 0 %}
+          {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
             <section class="row category-section-wrapper mx-0 g-0 bg-light">
               <div class="section-heading-container">
                 <div class="category-title-wrapper"> 
@@ -114,7 +113,6 @@
               </div>
               <div class="folder-container">
                 {% for folder in category.folders %}
-                  {% assign folder_count = folder_count | plus:1 %}
                   {% if folder.entity_collection.size > 0 %}
                     <div class="folder-wrapper-single">
                       <div class="folder-title-div">
@@ -139,7 +137,7 @@
                           </div>
                         {% endfor %}
 
-                        {% if article_count > 0 %}
+                        {% if article_count >= 3 %}
                           </div>
                         {% endif %}
 
@@ -152,7 +150,7 @@
                           <div id="hidden-articles-{{ hidden_folder_count }}" class="hidden-article-div">
                         {% endif %}
 
-                        {% for entity in folder.entity_collection limit:3 offset: continue %}
+                        {% for entity in folder.entity_collection offset: continue %}
                         {% assign article_count = article_count | plus:1 %}
                           <div class="article-result">
                             <span class="result-arrow">></span>
@@ -164,7 +162,7 @@
                         {% comment %}
                           closes hidden articles div
                         {% endcomment %}
-                        {% if article_count >= 4 %}
+                        {% if article_count >= 0 %}
                           </div>
                         {% endif %}
 
@@ -177,6 +175,17 @@
                       </div>
                     </div>
                   {% endif %}
+
+                  {% for article in folder.articles %}
+                    {% for attachment in article.attachments %}
+                        {% comment %}
+
+                    <p>{{ attachment.filename }}</p>
+                        {% endcomment %}
+
+                    {% endfor %}
+                  {% endfor %}
+
                 {% endfor %}
               </div>
             </section>

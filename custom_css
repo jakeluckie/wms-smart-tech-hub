@@ -690,6 +690,8 @@ p[style] {
   .hidden-article-div {
     display: flex;
     flex-direction: row;
+    row-gap: 1rem;
+    flex-wrap: wrap;
   }
   .visible-article-div {
     flex-direction: row;
@@ -708,7 +710,8 @@ p[style] {
     flex-direction: row;
   }
   .folder-title-div {
-    min-width: 10rem
+    min-width: 12rem;
+    max-width: 12rem;
   }
   .article-results-wrapper {
     flex-direction: row;
@@ -720,5 +723,12 @@ p[style] {
   }
   .category-section-wrapper {
     padding: 2rem 2.25rem;
+}
+.folder-wrapper-single {
+  padding-bottom: 0.9rem;
+  margin-bottom: 1.4rem;
+}
+.category-title-wrapper {
+  margin: 0 0 1.9rem 0 !important;
 }
 }

@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-md-9 col-lg-6 mx-auto">
         {% assign search_text = 'Enter your search term here' | t %}
-        {{ portal | search_element.title: 'How can we help you?'}}
+        {{ portal | search_element.title: 'How can we help?'}}
         {% comment %}
         {{ portal | search_element.value: search_text }}
         {% endcomment %}
@@ -174,26 +174,25 @@
 <div class="container">
 <div id="home-text-container">
   <p class="page-title-desc">
-    Welcome to the Waikato Milking Systems SmartTECH hub - where all the
-    technical knowledge and support you need is at your fingertips.
+    Welcome to the Waikato Milking Systems SmartTECH Hub - where all the
+    technical knowledge and support you need, is at your fingertips.
   </p>
   <br />
   <p class="page-desc-copy">
-    Our SmartTECH Hub provides a comprehensive knowledge base, including
-    manuals, FAQ’s, diagrams, pictures, and training materials, designed to
-    help you stay informed and up-to-date. In addition, our live chat
-    function allows you to connect with our support team in real-time, while
-    our ticketing system allows you to raise a technical issue and track its
-    progress. You can also initiate a new Warranty Claim and monitor its
-    status.
+    Our SmartTECH Hub provides a comprehensive database of resources; including
+    manuals, diagrams, pictures, and FAQ’s – designed to help you stay informed
+    and up-to-date. In addition, our live chat function allows you to connect
+    with our support team in real-time, while our ticketing system allows you
+    to raise a technical issue and track its progress. You can also initiate
+    a new Warranty Claim and monitor its status.
   </p>
   <br />
   <p class="page-desc-copy">
     Whether you’re looking to troubleshoot a problem, expand your product
     knowledge, or simply stay ahead of the curve, we are committed to
     providing our dealers with the best possible expertise, technical
-    support and resources to ensure the smooth operation of your dealership,
-    and your customers’ businesses.
+    support and resources to ensure the smooth operation of your
+    dealership, and your customers’ businesses.
   </p>
 </div>
 </div>
