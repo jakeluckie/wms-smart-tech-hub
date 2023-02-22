@@ -30,6 +30,8 @@
     <div class="container">
       {{page_message}}
       {% for category in portal.solution_categories %}
+      {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
+      {% else %}
         {% if category.folders_count > 0 %}
           <section class="row fw-category-wrapper box-shadow br-12 mx-0 g-0 bg-light">
             <div class="col-12 fw-section-heading align-items-center">
@@ -97,12 +99,12 @@
             </div>  
           </section>
         {% endif %}
+      {% endif %}
       {% endfor %}
     </div>
 
     <div class="container">
-        {% assign visible_folder_count = 0 %}
-        {% assign hidden_folder_count = 0 %}
+        {% assign folder_count = 0 %}
         {% for category in portal.solution_categories %}
           {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
             <section class="row category-section-wrapper mx-0 g-0 bg-light">
@@ -114,21 +116,23 @@
               <div class="folder-container">
                 {% for folder in category.folders %}
                   {% if folder.entity_collection.size > 0 %}
+                    {% assign folder_count = folder_count | plus:1 %}
                     <div class="folder-wrapper-single">
                       <div class="folder-title-div">
                         <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
                       </div>
-                      <div id="article-results-id" class="article-results-wrapper">
+
+                      <div class="article-results-wrapper">
                         {% assign article_count = 0 %}
-
-                        {% if article_count == 0 %}
-                          {% assign visible_folder_count = visible_folder_count | plus:1 %}
-                          <div id="visible-articles-{{ visible_folder_count }}" class="visible-article-div">
-                        {% endif %}
-
-                        {% for entity in folder.entity_collection limit:3 %}
+                        {% for entity in folder.entity_collection %}
                         {% assign article_count = article_count | plus:1 %}
-                          <div class="article-result">
+                          {% if article_count > 3 %}
+                            {% assign article_class = "article-result hidden-article" %}
+                          {% elsif article_count < 4 %}
+                            {% assign article_class = "article-result" %}
+                          {% endif %}
+
+                          <div class="{{ article_class }}">
                             <span class="result-arrow">></span>
                             <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
                             {% if folder.articles_count > 1 %}
@@ -137,38 +141,9 @@
                           </div>
                         {% endfor %}
 
-                        {% if article_count >= 3 %}
-                          </div>
-                        {% endif %}
-
-                        {% comment %}
-                          creates the outer div for hidden articles.
-                          adds a unique id so it can be targeted by javascript to show/hide folders that have articles
-                        {% endcomment %}
-                        {% if article_count == 3 %}
-                          {% assign hidden_folder_count = hidden_folder_count | plus:1 %}
-                          <div id="hidden-articles-{{ hidden_folder_count }}" class="hidden-article-div">
-                        {% endif %}
-
-                        {% for entity in folder.entity_collection offset: continue %}
-                        {% assign article_count = article_count | plus:1 %}
-                          <div class="article-result">
-                            <span class="result-arrow">></span>
-                            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
-                            <span class="article-divider"></span>
-                          </div>
-                        {% endfor %}
-
-                        {% comment %}
-                          closes hidden articles div
-                        {% endcomment %}
-                        {% if article_count >= 0 %}
-                          </div>
-                        {% endif %}
-
                         {% if folder.entity_collection.size > 3 %}
                           <div class="view-all-results-btn">
-                            <a href="javascript: showHideArticles('{{ hidden_folder_count }}')">View All ({{folder.entity_collection.size}})</a>
+                            <span>Show All</span>
                           </div>
                         {% endif %}
 

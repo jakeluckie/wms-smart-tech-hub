@@ -13,24 +13,15 @@
   crossorigin="anonymous">
 </script>
 <script>
-  function showAllResults(y) {
-    if (y === undefined) {
-      y = 1;
-    }
-    var x = document.getElementById('article-results-id').getElementsByClassName('article-result-hidden');
-    alert(x);
-    if (x.style.display === 'flex') {
-      x.style.display = 'none';
-    } else {
-      x.style.display = 'flex';
-       x.style.animation = 'fadeIn 200ms ease-in-out';
-    }
-  }  
-</script>
-<script>
-  $(document).ready(function(){
+$(document).ready(function(){
   $(".view-all-results-btn").click(function(){
-    $(".article-result-hidden").css('display', 'flex');
+    $(this).siblings('div.hidden-article').fadeToggle('fast');
+    var buttonText = $(this).children('span').text();
+    if (buttonText == 'Show All') {
+    	$(this).children('span').text('Hide All');
+    } else if(buttonText == 'Hide All') {
+    	$(this).children('span').text('Show All');
+    }
   });
 });
 </script>
