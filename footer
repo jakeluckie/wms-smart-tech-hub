@@ -29,5 +29,18 @@
  </footer>
 <script>
 jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
+
+  $(document).ready(function(){
+  $(".article-link").click(function(){
+    var articleNumber = $(this).attr('data-article-number');
+    $(this).parents('div.folder-wrapper-single').next().children('.article-content-' + articleNumber).fadeToggle("fast");
+  });
+
+  $(".article-cntnt-close").click(function(){
+    var myParent = $(this).parent();
+    $(myParent).parent().fadeOut("fast");
+  });
+  });
+
 </script>
 {% endif %}

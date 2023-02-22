@@ -53,7 +53,12 @@
             {% endif %}
 
             {% for attachment in article.attachments %}
-            <a href="{{ attachment.url }}" download="{{ attachment.filename }}" class="linkwrap" alt="">
+            {% assign attachment_class = 'linkwrap' %}
+            {% if attachment.filename contains "OBS_" %}
+              {% assign attachment_class = 'linkwrap obsolete' %}
+            {% endif %}
+
+            <a href="{{ attachment.url }}" download="{{ attachment.filename }}" class="{{ attachment_class }}" alt="">
             <div class="filedownload">
               <div class="filedownloaddetails">
                 <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
