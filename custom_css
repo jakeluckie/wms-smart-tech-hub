@@ -112,6 +112,9 @@ body .fw-secondary-button:hover {
 .fw-wrapper-shadow .fw-content {
   margin: 1.5rem 1.5rem;
 }
+.fw-nav-wrapper {
+  border-bottom: 0;
+}
 
 @media (min-width: 1200px) {
   .navbar .navbar-collapse .nav-item .nav-link {
@@ -135,6 +138,9 @@ body .fw-secondary-button:hover {
 @media (min-width: 768px) {
   .navbar .fw-brand-logo {
     max-width: 20rem;
+  }
+  .fw-searchbar-wrapper.fw-sticky {
+    top: 76px;
   }
 }
 
@@ -593,7 +599,7 @@ p[style] {
 }
 
 .article-results-wrapper {
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 
@@ -690,6 +696,10 @@ p[style] {
   cursor: pointer;
 }
 
+.active-article-link {
+  color:#4a4a4a;
+}
+
 .article-link:hover {
   color:#4a4a4a;
 }
@@ -722,6 +732,7 @@ p[style] {
     max-width: 12rem;
   }
   .article-results-wrapper {
+    display: flex;
     flex-direction: row;
     row-gap: 1rem;
     flex-wrap: wrap;
@@ -779,6 +790,9 @@ p[style] {
 }
 
 .article-cntnt-title {
+  display: flex;
+  column-gap: 0.5rem;
+  flex-wrap: wrap;
   font: 400 16px neo-sans, sans-serif !important;
   text-transform: unset;
   color: #4a4a4a;
@@ -804,7 +818,6 @@ p[style] {
 .article-cntnt-details-btn {
   font-style: italic;
   padding: 2px 6px;
-  margin-left: 0.7rem;
   font-size: 14px;
   background-color: #f4f6f6;
   color: #4a4a4a;

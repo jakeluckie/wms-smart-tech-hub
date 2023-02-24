@@ -5,7 +5,7 @@
         {% element 'secondary_nav' %}
          {
            "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
-                           { "label":"Technical Resources{% comment %}{{ 'portal_translations.header.tabs.solutions' | t }}{% endcomment %}", "url":"{{portal.solutions_home_url}}" },
+                           { "label":"Technical Resources", "url":"{{portal.solutions_home_url}}" },
                            { "label":"{{ category.name | escape_once }}", "url":"{{category.url}}" }]
          }
        {% endelement %}
@@ -19,19 +19,8 @@
 <section class="container-fluid px-0 fw-page-title-wrapper">
   <div class="container">
     <div class="py-24 py-lg-60 mx-0 fw-search-meta-info g-0">
-    {% comment %}
-      {% if category.icon %}
-        <div class="fw-fig">
-          <img src="{{category.icon}}" class="img-fluid" alt="category image">
-        </div>
-      {% else %}
-        <div class="fw-icon-holder pe-8">
-          <span class="icon-category"></span>
-        </div>
-      {% endif %}
-      {% endcomment %}
       <div class="text-start">
-        <h1 class="fw-page-title">{{ category.name }} {% comment %}({{ category.folders_count }}){% endcomment %}</h1>
+        <h1 class="fw-page-title">{{ category.name }}</h1>
         <img src="https://waikatomilking.com/themes/waikato/images/redesign/banner_line.svg" alt="" class="banner__line">
         <p>{{ category.description }}</p>
       </div>
@@ -39,61 +28,89 @@
   </div>
 </section>
 
-<section class="container-fluid px-0 py-24">
-  <div class="container">
-    {{ page_message }}
-    <section class="row box-shadow br-12 fw-category-wrapper mx-0 g-0 bg-light">
-      <div class="row mx-0 fw-section-content g-0">
-        {% for folder in category.folders %}
-            <div class="col-md-6 fw-folder">
-              <div class="fs-20 mb-24 semi-bold">
-               {% element 'link' %}
-                {
-                 "url": "{{ folder.url }}",
-                 "class": "fw-heading d-flex",
-                 "content": "<div class='line-clamp-2'> {{ folder.name | escape_once }} ({{ folder.entity_collection.size }})</div>",
-                 "other_attributes": [{ "key":"role", "value":"heading" }]
-                }
-               {% endelement %}
-                
-                {% comment %}
-                {% element 'link' %}
-                {
-                 "url": "{{ folder.url }}",
-                 "class": "fw-heading d-flex",
-                 "content": "{% if folder.icon %}<div class='fw-folder-icon text-center me-8'><img src='{{folder.icon}}' class='img-fluid'></div>{% else %}<div class='fw-folder-icon text-center pt-4 me-8'><span class='icon-folder'></span></div>{% endif %}<div class='line-clamp-2'> {{ folder.name | escape_once }} ({{ folder.entity_collection.size }})</div>",
-                 "other_attributes": [{ "key":"role", "value":"heading" }]
-                }
-               {% endelement %}
-               {% endcomment %}
-                
-                
-              </div>
-              <ul class="fw-no-bullet ms-36">
-                {% for entity in folder.entity_collection limit:3 %}
-                 <li>
-                  {% element 'link' %}
-                   {
-                    "url": "{{ entity.url }}",
-                    "class": "d-flex",
-                    "content": "{% if entity.icon %}<div class='fw-folder-icon fw-subfolder-icon text-center me-8'><img src='{{entity.icon}}' class='img-fluid'></div>{% else %}<div class='pe-8'><span class='icon-{{entity.source_type}}'></span></div>{% endif %}<div class='line-clamp-2'>{{ entity.name | escape_once }}</div>"
-                   }
-                  {% endelement %}
-                 </li>
+  <section class="container-fluid px-0 py-24">
+    <div class="container">
+<section class="row category-section-wrapper mx-0 g-0 bg-light">
+              <div class="folder-container">
+                {% for folder in category.folders %}
+                {% assign folder_count = folder_count | plus:1 %}
+                  {% if folder.entity_collection.size > 0 %}
+                    <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
+                      <div class="folder-title-div">
+                        <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
+                      </div>
+
+                      <div class="article-results-wrapper">
+                        {% assign article_count = 0 %}
+                        {% for entity in folder.entity_collection %}
+                          {% assign article_count = article_count | plus:1 %}
+                          {% if article_count > 3 %}
+                            {% assign article_class = "article-result hidden-article" %}
+                          {% elsif article_count < 4 %}
+                            {% assign article_class = "article-result" %}
+                          {% endif %}
+
+                          <div class="{{ article_class }}">
+                            <span class="result-arrow">></span>
+
+                            <span class="article-link" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
+                            
+                            {% comment %}
+                            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
+                            {% endcomment %}
+                            {% if folder.articles_count > 1 %}
+                              <span class="article-divider"></span>
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+
+                        {% if folder.entity_collection.size > 3 %}
+                          <div class="view-all-results-btn">
+                            <span>Show All</span>
+                          </div>
+                        {% endif %}
+
+                      </div>
+                    </div>
+                  {% endif %}
+                  
+                  <div id="article-documents-{{ folder_count }}" class="folder-article-result-wrapper">
+                  {% assign article_count = 0 %}
+                  {% for article in folder.articles %}
+                  {% assign article_count = article_count | plus:1 %}
+                    <div class="article-content-{{ article_count }}">
+                      <div class="article-title-and-close">
+                        <span class="article-cntnt-title">> Documents for <span>{{ article.title }}</span><a href="{{ article.url }}" class="article-cntnt-details-btn">View Document Page</a></span>
+                        <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/close.svg" class="article-cntnt-close"/>
+                      </div>
+                      {% for attachment in article.attachments %}
+                      {% assign attachment_class = 'linkwrap' %}
+                      {% if attachment.filename contains "OBS_" %}
+                        {% assign attachment_class = 'linkwrap obsolete' %}
+                      {% endif %}
+
+                      <a href="{{ attachment.url }}" target="_self" download class="{{ attachment_class }}" alt="">
+                        <div class="filedownload">
+                          <div class="filedownloaddetails">
+                            <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
+                          </div>
+                          <div class="downloadsize">
+                            <span>{{ attachment.size }}</span>
+                            <span>{{ attachment.extension}}</span>
+                          </div>
+                          <div class="downloadbtn">
+                            <p>Download</p>
+                            <img src="https://waikatomilking.com/themes/waikato/images/redesign/icons/download.svg"/>
+                          </div>
+                        </div>
+                      </a>
+
+                    {% endfor %}
+                    </div>
+                  {% endfor %}
+                  </div>
                 {% endfor %}
-              </ul>
-              {% if folder.entity_collection.size > 3 %}
-               {% element 'link' %}
-                {
-                 "url": "{{ folder.url }}",
-                 "content": "{{ 'portal_translations.view_all' | t }} {{folder.entity_collection.size}}",
-                 "class": "ms-36 my-16 d-block"
-                }
-               {% endelement %}
-              {% endif %}
-            </div>
-        {% endfor %}
-      </div>
-    </section>
-  </div>
+              </div>
+            </section>
+</div>
 </section>

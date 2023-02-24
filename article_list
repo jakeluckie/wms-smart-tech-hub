@@ -5,7 +5,7 @@
          {% element 'secondary_nav' %}
            {
              "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
-                             { "label":"Technical Resources{% comment %}{{ 'portal_translations.header.tabs.solutions' | t }}{% endcomment %}", "url":"{{portal.solutions_home_url}}" },
+                             { "label":"Technical Resources", "url":"{{portal.solutions_home_url}}" },
                              { "label": "{{ category.name | escape_once }}", "url":"{{category.url}}" },
                              { "label": "{{ folder.name | escape_once }}", "url":"{{folder.url}}" }]
            }
@@ -20,19 +20,8 @@
   <section class="container-fluid px-0 fw-page-title-wrapper">
     <div class="container">
       <div class="py-24 py-lg-60 mx-0 fw-search-meta-info g-0">
-      {% comment %}
-        {% if folder.icon %}
-          <div class="fw-fig">
-            <img src="{{folder.icon}}" class="img-fluid" alt="category image">
-          </div>
-        {% else %}
-          <div class="fw-icon-holder pe-8">
-            <span class="icon-folder"></span>
-          </div>
-        {% endif %}
-      {% endcomment %}
         <div class="text-start">
-          <h1 class="fw-page-title">{{ folder.name }} {% comment %}({{ folder.entity_collection.size}}){% endcomment %}</h1>
+          <h1 class="fw-page-title">{{ folder.name }}</h1>
           <img src="https://waikatomilking.com/themes/waikato/images/redesign/banner_line.svg" alt="" class="banner__line">
           <p>{{ folder.description }}</p>
         </div>
@@ -42,26 +31,82 @@
 
   <section class="container-fluid px-0 py-24">
     <div class="container">
-      {{ page_message }}
-        {% paginate folder.entity_collection by 500 %}
-          <section class="row fw-category-wrapper box-shadow br-12 mx-0 g-0 bg-light">
-            <ul class="fw-no-bullet fw-articles fw-section-content">
-              {% for entity in paginate.collection %}
-                <li>
-                  <a href="{{ entity.url }}" class="row mx-0 g-0">
-                    <div class="col-md-8 d-flex">
-                      {% if entity.icon %}<div class='fw-folder-icon fw-subfolder-icon text-center me-8'><img src='{{entity.icon}}' class='img-fluid'></div>{% else %}<div class="pe-8 pt-4"><span class="icon-{{entity.source_type}}"></span></div>{% endif %}
-                      <div class="line-clamp-2">{{ entity.name }}</div>
+      <section class="row category-section-wrapper mx-0 g-0 bg-light">
+        <div class="folder-container">
+                  {% if folder.entity_collection.size > 0 %}
+                    <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
+
+
+                      <div class="article-results-wrapper">
+                        {% assign article_count = 0 %}
+                        {% for entity in folder.entity_collection %}
+                          {% assign article_count = article_count | plus:1 %}
+                          {% if article_count > 3 %}
+                            {% assign article_class = "article-result hidden-article" %}
+                          {% elsif article_count < 4 %}
+                            {% assign article_class = "article-result" %}
+                          {% endif %}
+
+                          <div class="{{ article_class }}">
+                            <span class="result-arrow">></span>
+
+                            <span class="article-link" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
+                            
+                            {% comment %}
+                            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
+                            {% endcomment %}
+                            {% if folder.articles_count > 1 %}
+                              <span class="article-divider"></span>
+                            {% endif %}
+                          </div>
+                        {% endfor %}
+
+                        {% if folder.entity_collection.size > 3 %}
+                          <div class="view-all-results-btn">
+                            <span>Show All</span>
+                          </div>
+                        {% endif %}
+
+                      </div>
                     </div>
-                    <div class="col-md-4 fw-modified fw-meta-info small">
-                      {{ entity | solution_author_info: 'article-list' }}
+                  {% endif %}
+                  
+                  <div id="article-documents-{{ folder_count }}" class="folder-article-result-wrapper">
+                  {% assign article_count = 0 %}
+                  {% for article in folder.articles %}
+                  {% assign article_count = article_count | plus:1 %}
+                    <div class="article-content-{{ article_count }}">
+                      <div class="article-title-and-close">
+                        <span class="article-cntnt-title">> Documents for <span>{{ article.title }}</span><a href="{{ article.url }}" class="article-cntnt-details-btn">View Document Page</a></span>
+                        <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/close.svg" class="article-cntnt-close"/>
+                      </div>
+                      {% for attachment in article.attachments %}
+                      {% assign attachment_class = 'linkwrap' %}
+                      {% if attachment.filename contains "OBS_" %}
+                        {% assign attachment_class = 'linkwrap obsolete' %}
+                      {% endif %}
+
+                      <a href="{{ attachment.url }}" target="_self" download class="{{ attachment_class }}" alt="">
+                        <div class="filedownload">
+                          <div class="filedownloaddetails">
+                            <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
+                          </div>
+                          <div class="downloadsize">
+                            <span>{{ attachment.size }}</span>
+                            <span>{{ attachment.extension}}</span>
+                          </div>
+                          <div class="downloadbtn">
+                            <p>Download</p>
+                            <img src="https://waikatomilking.com/themes/waikato/images/redesign/icons/download.svg"/>
+                          </div>
+                        </div>
+                      </a>
+
+                    {% endfor %}
                     </div>
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
-          </section>
-          {{ paginate | pagination }}
-        {% endpaginate %}
+                  {% endfor %}
+                  </div>
+              </div>
+              </section>
     </div>
   </section>

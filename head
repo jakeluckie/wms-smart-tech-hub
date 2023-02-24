@@ -15,7 +15,7 @@
 <script>
 $(document).ready(function(){
   $(".view-all-results-btn").click(function(){
-    $(this).siblings('div.hidden-article').fadeToggle('fast');
+    $(this).siblings('div.hidden-article').fadeToggle('fast').css('display', 'flex');;
     var buttonText = $(this).children('span').text();
     if (buttonText == 'Show All') {
     	$(this).children('span').text('Hide All');

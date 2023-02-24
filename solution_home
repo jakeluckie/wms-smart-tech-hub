@@ -28,6 +28,7 @@
 
   <section class="container-fluid px-0 py-24">
     <div class="container">
+        {% assign folder_count = 0 %}
         {% for category in portal.solution_categories %}
           {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
             <section class="row category-section-wrapper mx-0 g-0 bg-light">
@@ -38,8 +39,9 @@
               </div>
               <div class="folder-container">
                 {% for folder in category.folders %}
+                {% assign folder_count = folder_count | plus:1 %}
                   {% if folder.entity_collection.size > 0 %}
-                    <div class="folder-wrapper-single">
+                    <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
                       <div class="folder-title-div">
                         <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
                       </div>
@@ -78,13 +80,13 @@
                     </div>
                   {% endif %}
 
-                  <div class="folder-article-result-wrapper">
+                  <div id="article-documents-{{ folder_count }}" class="folder-article-result-wrapper">
                   {% assign article_count = 0 %}
                   {% for article in folder.articles %}
                   {% assign article_count = article_count | plus:1 %}
                     <div class="article-content-{{ article_count }}">
                       <div class="article-title-and-close">
-                        <span class="article-cntnt-title">> Documents for <span>{{ article.title }}&nbsp;</span><a href="{{ article.url }}" class="article-cntnt-details-btn">See Details...</a></span>
+                        <span class="article-cntnt-title">> Documents for <span>{{ article.title }}</span><a href="{{ article.url }}" class="article-cntnt-details-btn">View Document Page</a></span>
                         <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/close.svg" class="article-cntnt-close"/>
                       </div>
                       {% for attachment in article.attachments %}
@@ -93,7 +95,7 @@
                         {% assign attachment_class = 'linkwrap obsolete' %}
                       {% endif %}
 
-                      <a href="{{ attachment.url }}" download="{{ attachment.filename }}" class="{{ attachment_class }}" alt="">
+                      <a href="{{ attachment.url }}" target="_self" download class="{{ attachment_class }}" alt="">
                         <div class="filedownload">
                           <div class="filedownloaddetails">
                             <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
@@ -123,7 +125,8 @@
     <div class="container">
       {{page_message}}
       {% for category in portal.solution_categories %}
-      {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
+      {% if category.name == "FAQ's" or category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
+      {% comment %} DO NOTHING {% endcomment %}
       {% else %}
         {% if category.folders_count > 0 %}
           <section class="row fw-category-wrapper box-shadow br-12 mx-0 g-0 bg-light">
