@@ -33,13 +33,31 @@ jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
   $(document).ready(function(){
   $(".article-link").click(function(){
     var articleNumber = $(this).attr('data-article-number');
-    $(this).parents('div.folder-wrapper-single').next().children('.article-content-' + articleNumber).fadeToggle("fast");
+    const article = $(this).parents('div.folder-wrapper-single').next().children('.article-content-' + articleNumber);
+    const firstChild = $(this).parents('div.folder-wrapper-single').next().children().eq(0);
+
+    if ($(article).is(':visible')) {
+      $(article).fadeOut("fast");
+    } else {
+      $(article).insertBefore(firstChild);
+      $(article).fadeIn("fast");
+    }
+
     $(this).toggleClass('active-article-link');
+    //$("#article-documents-"+folderNumber).get(0).scrollIntoView({behavior: 'smooth', block: "start"});
 
     // scroll to document div
-    var folderNumber = $(this).parents("div.folder-wrapper-single").attr("id").match(/article-links-(\d+)/)[1];
-    $("#article-documents-"+folderNumber).get(0).scrollIntoView({behavior: 'smooth', block: "center", inline: "center"});
+    const folderNumber = $(this).parents("div.folder-wrapper-single").attr("id").match(/article-links-(\d+)/)[1]; 
+    const id = "article-documents-"+folderNumber;
+    const yOffset = -200;
+    const element = document.getElementById(id);
 
+    if (window.matchMedia("(max-width: 767px)").matches){
+        const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({top: y, behavior: 'smooth'});
+    } else {
+      //element.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
   });
 
   $('.folder-title-div').click(function(){
@@ -54,6 +72,17 @@ jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
 
     var myParent = $(this).parent();
     $(myParent).parent().fadeOut("fast");
+
+    const linksId = $(this).parents(".folder-article-result-wrapper").prev().attr("id");
+    const yOffset = -200;
+    const element = document.getElementById(linksId);
+
+    if (window.matchMedia("(max-width: 767px)").matches){
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({top: y, behavior: 'smooth'});
+    } else {
+      //element.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }
   });
   });
 

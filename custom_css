@@ -703,6 +703,9 @@ p[style] {
 .article-link:hover {
   color:#4a4a4a;
 }
+/* .folder-article-result-wrapper {
+  scroll-margin-top: 35vh;
+} */
 
 @media (min-width: 992px) {
   .hidden-article-div {

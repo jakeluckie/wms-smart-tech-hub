@@ -44,19 +44,14 @@
                     <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
                       <div class="folder-title-div">
                         <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
+                        <span class="expand-arrow-mobile"></span>
                       </div>
 
                       <div class="article-results-wrapper">
                         {% assign article_count = 0 %}
                         {% for entity in folder.entity_collection %}
                           {% assign article_count = article_count | plus:1 %}
-                          {% if article_count > 3 %}
-                            {% assign article_class = "article-result hidden-article" %}
-                          {% elsif article_count < 4 %}
-                            {% assign article_class = "article-result" %}
-                          {% endif %}
-
-                          <div class="{{ article_class }}">
+                          <div class="article-result">
                             <span class="result-arrow">></span>
                             <span class="article-link" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
 
@@ -69,13 +64,6 @@
                             {% endif %}
                           </div>
                         {% endfor %}
-
-                        {% if folder.entity_collection.size > 3 %}
-                          <div class="view-all-results-btn">
-                            <span>Show All</span>
-                          </div>
-                        {% endif %}
-
                       </div>
                     </div>
                   {% endif %}

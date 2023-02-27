@@ -44,8 +44,15 @@
                         {% assign article_count = 0 %}
                         {% for entity in folder.entity_collection %}
                           {% assign article_count = article_count | plus:1 %}
-                          <div class="article-result">
+                          {% if article_count > 3 %}
+                            {% assign article_class = "article-result hidden-article" %}
+                          {% elsif article_count < 4 %}
+                            {% assign article_class = "article-result" %}
+                          {% endif %}
+
+                          <div class="{{ article_class }}">
                             <span class="result-arrow">></span>
+
                             <span class="article-link" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
                             
                             {% comment %}
@@ -56,6 +63,13 @@
                             {% endif %}
                           </div>
                         {% endfor %}
+
+                        {% if folder.entity_collection.size > 3 %}
+                          <div class="view-all-results-btn">
+                            <span>Show All</span>
+                          </div>
+                        {% endif %}
+
                       </div>
                     </div>
                   {% endif %}
