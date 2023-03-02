@@ -1,31 +1,11 @@
 {% if  portal.current_page != "csat_survey" %}
  <footer class="container-fluid px-0">
-   {% comment %}
-   <div>
-       <div class="footer__branding">
-         <a href="/" class="footer__logo">
-           <img src="https://waikatomilking.com/themes/waikato/images/redesign/logo-white.svg" alt="Waikato Milking Systems" class="footer__logo--img">
-         </a>
-         <h2 class="h2 footer__tagline">Growing the value of dairy</h2>
-       </div>  
-     </div>
-   {% endcomment %}
-   
    <section class="fw-contact-info">
      
      <p class="fw-contacts">
        {{ portal | footer_contact_info }}
      </p>
    </section>
-   {% comment %}
-   <section class="fw-credit">
-     <nav class="fw-laws">
-        {{ portal | footer_cookie_law }}
-        {{ portal | footer_privacy_law }}
-        {{ portal | default_cookie_policy_settings }}
-     </nav>
-   </section>
-   {% endcomment %}
  </footer>
 <script>
 jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
@@ -44,7 +24,6 @@ jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
     }
 
     $(this).toggleClass('active-article-link');
-    //$("#article-documents-"+folderNumber).get(0).scrollIntoView({behavior: 'smooth', block: "start"});
 
     // scroll to document div
     const folderNumber = $(this).parents("div.folder-wrapper-single").attr("id").match(/article-links-(\d+)/)[1]; 
@@ -84,7 +63,17 @@ jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
       //element.scrollIntoView({behavior: 'smooth', block: 'center'});
     }
   });
-  });
 
+  
+  $( ".folder-title-div" ).click(function(){
+    const arrowImg = $(this).children(".expand-arrow-mobile");
+    if ($(arrowImg).css("transform") == 'none'){
+      $(arrowImg).css("transform","rotate(90deg)");
+    } else {
+      $(arrowImg).css("transform","");
+    }
+  });
+  
+  });
 </script>
 {% endif %}

@@ -28,7 +28,7 @@
   <section class="container-fluid pt-32 pb-60">
     <div class="container tickets-list-container px-0">
       {{ page_message }}
-      <div class="row mx-0 g-0 bg-light flex-row-reverse flex-lg-row tickets-list-wrapper fw-category-wrapper fw-wrapper-shadow">
+      <div class="row mx-0 g-0 bg-light tickets-list-wrapper fw-category-wrapper fw-wrapper-shadow">
         <div id="ticket-list" class="col-lg-9 fw-content-wrapper mb-16 mb-lg-0">
           {% snippet ticket_list %}
         </div>

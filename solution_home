@@ -3,10 +3,7 @@
       <div class="row align-items-center py-8">
         <div class="col-md-6">
           {% element 'secondary_nav' %}
-           {
-             "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
-                             { "label":"Technical Resources{% comment %}{{ 'portal_translations.header.tabs.solutions' | t }}{% endcomment %}", "url":"{{portal.solutions_home_url}}" }]
-           }
+           {"breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },{ "label":"Technical Resources", "url":"{{portal.solutions_home_url}}" }]}
           {% endelement %}
         </div>
         <div class="col-md-4 ms-auto">
@@ -19,7 +16,7 @@
     <div class="container">
       <div class="py-24 py-lg-60 mx-0 fw-search-meta-info g-0">
         <div class="text-start">
-          <h1 class="fw-page-title">Technical Resources{% comment %}{{ 'portal_translations.header.tabs.solutions' | t }}{% endcomment %}</h1>
+          <h1 class="fw-page-title">Technical Resources</h1>
           <img src="https://waikatomilking.com/themes/waikato/images/redesign/banner_line.svg" alt="" class="banner__line">
         </div>
       </div>
@@ -30,7 +27,7 @@
     <div class="container">
         {% assign folder_count = 0 %}
         {% for category in portal.solution_categories %}
-          {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
+          {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Effluent' %}
             <section class="row category-section-wrapper mx-0 g-0 bg-light">
               <div class="section-heading-container">
                 <div class="category-title-wrapper"> 
@@ -44,21 +41,28 @@
                     <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
                       <div class="folder-title-div">
                         <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
-                        <span class="expand-arrow-mobile"></span>
+                        <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/arrow.svg" class="expand-arrow-mobile"/>
                       </div>
 
                       <div class="article-results-wrapper">
                         {% assign article_count = 0 %}
                         {% for entity in folder.entity_collection %}
                           {% assign article_count = article_count | plus:1 %}
+                          {% if entity.name == "Obsolete" %}
+                            {% assign article_link_class = "article-link article-link-obsolete" %}
+                          {% elsif entity.name == "Diagrams" %}
+                            {% assign article_link_class = "article-link article-link-diagram" %}
+                          {% else %}
+                            {% assign article_link_class = "article-link" %}
+                          {% endif %}
                           <div class="article-result">
                             <span class="result-arrow">></span>
-                            <span class="article-link" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
+                            <span class="{{ article_link_class }}" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
+                            
 
                             {% comment %}
-                            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
+                            <a class="{{ article_link_class }}" href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
                             {% endcomment %}
-
                             {% if folder.articles_count > 1 %}
                               <span class="article-divider"></span>
                             {% endif %}
@@ -83,10 +87,10 @@
                         {% assign attachment_class = 'linkwrap obsolete' %}
                       {% endif %}
 
-                      <a href="{{ attachment.url }}" target="_self" download class="{{ attachment_class }}" alt="">
+                      <a href="{{ attachment.url }}" target="_blank" class="{{ attachment_class }}" alt="">
                         <div class="filedownload">
                           <div class="filedownloaddetails">
-                            <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
+                            <h4 class="filedownloadtitle">{{ attachment.filename | escape_once }}</h4>
                           </div>
                           <div class="downloadsize">
                             <span>{{ attachment.size }}</span>
@@ -109,12 +113,14 @@
           {% endif %}
         {% endfor %}
     </div>
-
+    
+    
     <div class="container">
       {{page_message}}
       {% for category in portal.solution_categories %}
-      {% if category.name == "FAQ's" or category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems'  %}
-      {% comment %} DO NOTHING {% endcomment %}
+      {% if category.name == "FAQ's" or category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Effluent' or category.name == 'Manuals' or category.name == 'Gallery' or category.name == 'Technical Bulletins and Product Updates' or category.name == 'General' or category.name == 'Dairy Effluent' %}
+      {% comment %}  DO NOTHING 
+    {% endcomment %}
       {% else %}
         {% if category.folders_count > 0 %}
           <section class="row fw-category-wrapper box-shadow br-12 mx-0 g-0 bg-light">

@@ -31,86 +31,88 @@
   <section class="container-fluid px-0 py-24">
     <div class="container">
 <section class="row category-section-wrapper mx-0 g-0 bg-light">
-              <div class="folder-container">
-                {% for folder in category.folders %}
-                {% assign folder_count = folder_count | plus:1 %}
-                  {% if folder.entity_collection.size > 0 %}
-                    <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
-                      <div class="folder-title-div">
-                        <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
-                      </div>
+  {% if category.name == "FAQ's" %}
+  {% endif %}
+  <div class="folder-container">
+  {% for folder in category.folders %}
+    {% if folder.name == 'Frequently Asked Questions' %}
+    {% else %}
 
-                      <div class="article-results-wrapper">
-                        {% assign article_count = 0 %}
-                        {% for entity in folder.entity_collection %}
-                          {% assign article_count = article_count | plus:1 %}
-                          {% if article_count > 3 %}
-                            {% assign article_class = "article-result hidden-article" %}
-                          {% elsif article_count < 4 %}
-                            {% assign article_class = "article-result" %}
-                          {% endif %}
+    {% assign folder_count = folder_count | plus:1 %}
+    {% if folder.entity_collection.size > 0 %}
+    <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
+      <div class="folder-title-div">
+        <h5 class="folder-title">{{ folder.name | escape_once }}</h5>
+        <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/arrow.svg" class="expand-arrow-mobile"/>
+      </div>
 
-                          <div class="{{ article_class }}">
-                            <span class="result-arrow">></span>
+      <div class="article-results-wrapper">
+      {% assign article_count = 0 %}
+      {% for entity in folder.entity_collection %}
+        {% assign article_count = article_count | plus:1 %}
+        {% if entity.name == "Obsolete" %}
+          {% assign article_link_class = "article-link article-link-obsolete" %}
+        {% else %}
+          {% assign article_link_class = "article-link" %}
+        {% endif %}
+        <div class="article-result">
+          <span class="result-arrow">></span>
 
-                            <span class="article-link" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
-                            
-                            {% comment %}
-                            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
-                            {% endcomment %}
-                            {% if folder.articles_count > 1 %}
-                              <span class="article-divider"></span>
-                            {% endif %}
-                          </div>
-                        {% endfor %}
+          {% if category.name != "FAQ's" %}
+            <span class="{{ article_link_class }}" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
+          {% elsif category.name == "FAQ's" %}
+            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
+          {% endif %}
 
-                        {% if folder.entity_collection.size > 3 %}
-                          <div class="view-all-results-btn">
-                            <span>Show All</span>
-                          </div>
-                        {% endif %}
+          {% if folder.articles_count > 1 %}
+            <span class="article-divider"></span>
+          {% endif %}
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+    {% endif %}
 
-                      </div>
-                    </div>
-                  {% endif %}
-                  
-                  <div id="article-documents-{{ folder_count }}" class="folder-article-result-wrapper">
-                  {% assign article_count = 0 %}
-                  {% for article in folder.articles %}
-                  {% assign article_count = article_count | plus:1 %}
-                    <div class="article-content-{{ article_count }}">
-                      <div class="article-title-and-close">
-                        <span class="article-cntnt-title">> Documents for <span>{{ article.title }}</span><a href="{{ article.url }}" class="article-cntnt-details-btn">View Document Page</a></span>
-                        <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/close.svg" class="article-cntnt-close"/>
-                      </div>
-                      {% for attachment in article.attachments %}
-                      {% assign attachment_class = 'linkwrap' %}
-                      {% if attachment.filename contains "OBS_" %}
-                        {% assign attachment_class = 'linkwrap obsolete' %}
-                      {% endif %}
+    {% if category.name != "FAQ's" %}
+    <div id="article-documents-{{ folder_count }}" class="folder-article-result-wrapper">
+    {% assign article_count = 0 %}
+    {% for article in folder.articles %}
+      {% assign article_count = article_count | plus:1 %}
+      <div class="article-content-{{ article_count }}">
+        <div class="article-title-and-close">
+          <span class="article-cntnt-title">> Documents for <span>{{ article.title }}</span><a href="{{ article.url }}" class="article-cntnt-details-btn">View Document Page</a></span>
+          <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/close.svg" class="article-cntnt-close"/>
+        </div>
+        {% for attachment in article.attachments %}
+          {% assign attachment_class = 'linkwrap' %}
+          {% if attachment.filename contains "OBS_" %}
+            {% assign attachment_class = 'linkwrap obsolete' %}
+          {% endif %}
 
-                      <a href="{{ attachment.url }}" target="_self" download class="{{ attachment_class }}" alt="">
-                        <div class="filedownload">
-                          <div class="filedownloaddetails">
-                            <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
-                          </div>
-                          <div class="downloadsize">
-                            <span>{{ attachment.size }}</span>
-                            <span>{{ attachment.extension}}</span>
-                          </div>
-                          <div class="downloadbtn">
-                            <p>Download</p>
-                            <img src="https://waikatomilking.com/themes/waikato/images/redesign/icons/download.svg"/>
-                          </div>
-                        </div>
-                      </a>
-
-                    {% endfor %}
-                    </div>
-                  {% endfor %}
-                  </div>
-                {% endfor %}
+          <a href="{{ attachment.url }}" target="_blank" download class="{{ attachment_class }}" alt="">
+            <div class="filedownload">
+              <div class="filedownloaddetails">
+                <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
               </div>
-            </section>
+              <div class="downloadsize">
+                <span>{{ attachment.size }}</span>
+                <span>{{ attachment.extension}}</span>
+              </div>
+              <div class="downloadbtn">
+                <p>Download</p>
+                <img src="https://waikatomilking.com/themes/waikato/images/redesign/icons/download.svg"/>
+              </div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+      {% endfor %}
+      </div>
+      {% endif %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</section>
 </div>
 </section>
