@@ -12,9 +12,7 @@
     </div>
   </div>
 </section>
-
 {% endif %}
-
 <section class="container-fluid px-0 mt-16">
   <div class="container">
     <div class="row justify-content-center">
@@ -44,7 +42,6 @@
           </div>
         </a>
       </div>
-
       <div class="col-md-6 col-xl-3 mb-8">
         <a
           class="card fw-horizontal card-hover-line"

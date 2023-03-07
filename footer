@@ -8,9 +8,8 @@
    </section>
  </footer>
 <script>
-jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
-
-  $(document).ready(function(){
+jQuery(document).ready(function(){
+  $("#searchInput").attr("placeholder", "Enter your search term here...");
   $(".article-link").click(function(){
     var articleNumber = $(this).attr('data-article-number');
     const article = $(this).parents('div.folder-wrapper-single').next().children('.article-content-' + articleNumber);
@@ -31,7 +30,7 @@ jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
     const yOffset = -200;
     const element = document.getElementById(id);
 
-    if (window.matchMedia("(max-width: 767px)").matches){
+    if (window.matchMedia("(max-width: 767px)").matches){ // if mobile
         const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
         window.scrollTo({top: y, behavior: 'smooth'});
     } else {
@@ -56,7 +55,7 @@ jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
     const yOffset = -200;
     const element = document.getElementById(linksId);
 
-    if (window.matchMedia("(max-width: 767px)").matches){
+    if (window.matchMedia("(max-width: 767px)").matches){ // if mobile
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({top: y, behavior: 'smooth'});
     } else {
@@ -74,6 +73,15 @@ jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
     }
   });
   
+  $(".view-all-results-btn").click(function(){
+    $(this).siblings('div.hidden-article').fadeToggle('fast').css('display', 'flex');;
+    var buttonText = $(this).children('span').text();
+    if (buttonText == 'Show All') {
+    	$(this).children('span').text('Hide All');
+    } else if(buttonText == 'Hide All') {
+    	$(this).children('span').text('Show All');
+    }
   });
+});
 </script>
 {% endif %}
