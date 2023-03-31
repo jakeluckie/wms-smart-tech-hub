@@ -12,7 +12,9 @@
     </div>
   </div>
 </section>
+
 {% endif %}
+
 <section class="container-fluid px-0 mt-16">
   <div class="container">
     <div class="row justify-content-center">
@@ -26,10 +28,10 @@
           <div class="col-3 px-0 my-auto text-center card-icon-div">
             <div class="fw-category-icon">
               <img
-                data-src="https://waikatomilking.com/assets/Card/Icons/180-Technical-Resources.svg"
+                data-src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/184-Technical-Resources.svg"
                 loading="lazy"
                 alt="Freshworks Logo"
-                src="https://waikatomilking.com/assets/Card/Icons/180-Technical-Resources.svg"
+                src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/184-Technical-Resources.svg"
               />
             </div>
           </div>
@@ -42,6 +44,7 @@
           </div>
         </a>
       </div>
+
       <div class="col-md-6 col-xl-3 mb-8">
         <a
           class="card fw-horizontal card-hover-line"
@@ -71,7 +74,7 @@
       <div class="col-md-6 col-xl-3 mb-8">
         <a
           class="card fw-horizontal card-hover-line"
-          href="/support/solutions/27000037100"
+          href="/support/solutions/27000026756"
           aria-label="Submit"
           a=""
           ticket=""
@@ -89,7 +92,7 @@
           <span class="card-divider--top"></span>
           <span class="card-divider--bottom"></span>
           <div class="card-body col-9">
-            <h2 class="mt-0 card-title fs-18 line-clamp-2">FAQ's</h2>
+            <h2 class="mt-0 card-title fs-18 line-clamp-2">General Information</h2>
           </div>
         </a>
       </div>

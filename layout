@@ -1,8 +1,7 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jakeluckie/wms-smart-tech-hub@v1.0/tech-hub.min.css">
 {{header}}
-
 <main class="fw-main-wrapper" id="fw-main-content">
   {{ content_for_layout }}
 </main>
-
 {{footer}}
 

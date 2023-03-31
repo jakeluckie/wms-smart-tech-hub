@@ -2,14 +2,24 @@
     <div class="container">
       <div class="row align-items-center py-8">
        <div class="col-md-6">
-         {% element 'secondary_nav' %}
-           {
+        {% if category.name != "General Information" %}
+          {% element 'secondary_nav' %}
+            {
              "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
                              { "label":"Technical Resources", "url":"{{portal.solutions_home_url}}" },
                              { "label": "{{ category.name | escape_once }}", "url":"{{category.url}}" },
                              { "label": "{{ folder.name | escape_once }}", "url":"{{folder.url}}" }]
-           }
+            }
           {% endelement %}
+        {% else %}
+          {% element 'secondary_nav' %}
+            {
+              "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
+                              { "label":"{{ category.name | escape_once }}", "url":"{{category.url}}" },
+                              { "label": "{{ folder.name | escape_once }}", "url":"{{folder.url}}" }]
+            }
+          {% endelement %}
+        {% endif %}
         </div>
         <div class="col-md-4 ms-auto">
           {{ portal | search_element }}
@@ -37,36 +47,33 @@
                     <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
 
 
-                      <div class="article-results-wrapper">
+                      <div class="fv-article-results-wrapper">
                         {% assign article_count = 0 %}
                         {% for entity in folder.entity_collection %}
                           {% assign article_count = article_count | plus:1 %}
-                          {% if article_count > 3 %}
-                            {% assign article_class = "article-result hidden-article" %}
-                          {% elsif article_count < 4 %}
-                            {% assign article_class = "article-result" %}
+                          {% if entity.name == "Obsolete" %}
+                            {% assign article_link_class = "article-link article-link-obsolete" %}
+                          {% elsif entity.name == "Diagrams" %}
+                            {% assign article_link_class = "article-link article-link-diagram" %}
+                          {% elsif entity.name == "How-to" %}
+                            {% assign article_link_class = "article-link article-link-howto" %}
+                          {% else %}
+                            {% assign article_link_class = "article-link" %}
                           {% endif %}
-
-                          <div class="{{ article_class }}">
+                          <div class="article-result">
                             <span class="result-arrow">></span>
-
-                            <span class="article-link" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
                             
-                            {% comment %}
-                            <a href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
-                            {% endcomment %}
+                            {% if category.name == "General Information" %}
+                              <a class="{{ article_link_class }}" href="{{ entity.url }}">{{ entity.name | escape_once }}</a>
+                            {% else %}
+                              <span class="{{ article_link_class }}" data-article-number="{{ article_count }}">{{ entity.name | escape_once }}</span>
+                            {% endif %}
+
                             {% if folder.articles_count > 1 %}
                               <span class="article-divider"></span>
                             {% endif %}
                           </div>
                         {% endfor %}
-
-                        {% if folder.entity_collection.size > 3 %}
-                          <div class="view-all-results-btn">
-                            <span>Show All</span>
-                          </div>
-                        {% endif %}
-
                       </div>
                     </div>
                   {% endif %}

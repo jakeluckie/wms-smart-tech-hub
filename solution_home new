@@ -1,0 +1,99 @@
+  <section class="fw-sticky fw-searchbar-wrapper">
+    <div class="container">
+      <div class="row align-items-center py-8">
+        <div class="col-md-6">
+          {% element 'secondary_nav' %}
+           {"breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },{ "label":"Technical Resources", "url":"{{portal.solutions_home_url}}" }]}
+          {% endelement %}
+        </div>
+        <div class="col-md-4 ms-auto">
+          {{ portal | search_element }}
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container-fluid px-0 fw-page-title-wrapper">
+    <div class="container">
+      <div class="py-24 py-lg-60 mx-0 fw-search-meta-info g-0">
+        <div class="text-start">
+          <h1 class="fw-page-title">Technical Resources</h1>
+          <img src="https://waikatomilking.com/themes/waikato/images/redesign/banner_line.svg" alt="" class="banner__line">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-fluid px-0 py-24">
+    <div class="container">
+        {% for category in portal.solution_categories %}
+          {% case category.name %}
+            {% when "Animal Management" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/33-Animal-Management.svg" %}
+            {% when "General Components" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/181-General-Components.svg" %}
+            {% when "Hygiene & Sanitisation" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/34-Animal-Hygiene.svg" %}
+            {% when "Milk Handling" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/31-Milk-Handling.svg" %}
+            {% when "Milk Room" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/36-Milk-Room.svg" %}
+            {% when "Milk Storage & Cooling" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/32-Milk-Storage-and-Cooling.svg" %}
+            {% when "Milking Point" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/30-Milking-point.svg" %}
+            {% when "Rotary Platform" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/185-Rotary-Platform.svg" %}
+            {% when "Systems" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/186-Systems.svg" %}
+            {% when "Dairy Effluent" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/180-Dairy-Effluent.svg" %}
+            {% when "Product Notifications" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/186-Product-Updates.svg" %}
+            {% endcase %}
+
+          {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Dairy Effluent' or category.name == 'Product Notifications' %}
+            <section class="row category-section-wrapper mx-0 g-0 bg-light">
+              <a href="{{ category.url }}">
+              <div class="sp-section-heading-container">
+                <div class="fw-category-icon">
+                <img
+                  class="sp-category-icon"
+                  data-src="{{ icon_url }}"
+                  loading="lazy"
+                  alt="category icon"
+                  src="{{ icon_url }}"
+                />
+                </div>
+                <div class="sp-category-title-wrapper"> 
+                  <h4 class="sp-category-title">{{ category.name | escape_once }}</h4>
+                </div>
+              </div>
+              </a>
+              {% if category.name == "Product Notifications"%}
+              {% comment %} NADA {% endcomment%}
+              {% else %}
+              <div class="sp-folder-container">
+                {% assign my_folder_count = 0 %}
+                {% for folder in category.folders %}
+                {% assign my_folder_count = my_folder_count | plus:1 %}
+                  {% if folder.entity_collection.size > 0 %}
+                    <a href="{{ folder.url }}">
+                    <div class="sp-folder-wrapper">
+                      <div class="sp-folder-title-div">
+                        <h5 class="sp-folder-title">{{ folder.name | escape_once }}</h5>
+                        <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/arrow.svg" class="expand-arrow-mobile"/>
+                        {% if category.folders_count > 1 and my_folder_count < category.folders_count %}
+                          <span class="sp-folder-divider"></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    </a>
+                  {% endif %}
+                  {% endfor %}
+                  </div>
+              {% endif %}
+            </section>
+          {% endif %}
+        {% endfor %}
+    </div>
+  </section>

@@ -9,23 +9,23 @@
  </footer>
 <script>
 jQuery(document).ready(function(){
-  $("#searchInput").attr("placeholder", "Enter your search term here...");
-  $(".article-link").click(function(){
-    var articleNumber = $(this).attr('data-article-number');
-    const article = $(this).parents('div.folder-wrapper-single').next().children('.article-content-' + articleNumber);
-    const firstChild = $(this).parents('div.folder-wrapper-single').next().children().eq(0);
+  jQuery("#searchInput").attr("placeholder", "Enter your search term here...");
+  jQuery(".article-link").click(function(){
+    var articleNumber = jQuery(this).attr('data-article-number');
+    const article = jQuery(this).parents('div.folder-wrapper-single').next().children('.article-content-' + articleNumber);
+    const firstChild = jQuery(this).parents('div.folder-wrapper-single').next().children().eq(0);
 
-    if ($(article).is(':visible')) {
-      $(article).fadeOut("fast");
+    if (jQuery(article).is(':visible')) {
+      jQuery(article).fadeOut("fast");
     } else {
-      $(article).insertBefore(firstChild);
-      $(article).fadeIn("fast");
+      jQuery(article).insertBefore(firstChild);
+      jQuery(article).fadeIn("fast");
     }
 
-    $(this).toggleClass('active-article-link');
+    jQuery(this).toggleClass('active-article-link');
 
     // scroll to document div
-    const folderNumber = $(this).parents("div.folder-wrapper-single").attr("id").match(/article-links-(\d+)/)[1]; 
+    const folderNumber = jQuery(this).parents("div.folder-wrapper-single").attr("id").match(/article-links-(\d+)/)[1]; 
     const id = "article-documents-"+folderNumber;
     const yOffset = -200;
     const element = document.getElementById(id);
@@ -38,20 +38,20 @@ jQuery(document).ready(function(){
     }
   });
 
-  $('.folder-title-div').click(function(){
-    $(this).next().fadeToggle("fast");
+  jQuery('.folder-title-div').click(function(){
+    jQuery(this).next().fadeToggle("fast");
   });
 
-  $(".article-cntnt-close").click(function(){
-    var thisParent = $(this).parent();
-    var articleNumber = $(thisParent).parent().attr("class").match(/article-content-(\d+)/)[1] - 1;
-    var articleLink = $(this).parents("div.folder-article-result-wrapper").prev().children(".article-results-wrapper");
-    $(articleLink).children(".article-result:eq("+articleNumber+")").children(".article-link").removeClass('active-article-link');
+  jQuery(".article-cntnt-close").click(function(){
+    var thisParent = jQuery(this).parent();
+    var articleNumber = jQuery(thisParent).parent().attr("class").match(/article-content-(\d+)/)[1] - 1;
+    var articleLink = jQuery(this).parents("div.folder-article-result-wrapper").prev().children(".article-results-wrapper");
+    jQuery(articleLink).children(".article-result:eq("+articleNumber+")").children(".article-link").removeClass('active-article-link');
 
-    var myParent = $(this).parent();
-    $(myParent).parent().fadeOut("fast");
+    var myParent = jQuery(this).parent();
+    jQuery(myParent).parent().fadeOut("fast");
 
-    const linksId = $(this).parents(".folder-article-result-wrapper").prev().attr("id");
+    const linksId = jQuery(this).parents(".folder-article-result-wrapper").prev().attr("id");
     const yOffset = -200;
     const element = document.getElementById(linksId);
 
@@ -64,22 +64,22 @@ jQuery(document).ready(function(){
   });
 
   
-  $( ".folder-title-div" ).click(function(){
-    const arrowImg = $(this).children(".expand-arrow-mobile");
-    if ($(arrowImg).css("transform") == 'none'){
-      $(arrowImg).css("transform","rotate(90deg)");
+  jQuery( ".folder-title-div" ).click(function(){
+    const arrowImg = jQuery(this).children(".expand-arrow-mobile");
+    if (jQuery(arrowImg).css("transform") == 'none'){
+      jQuery(arrowImg).css("transform","rotate(90deg)");
     } else {
-      $(arrowImg).css("transform","");
+      jQuery(arrowImg).css("transform","");
     }
   });
   
-  $(".view-all-results-btn").click(function(){
-    $(this).siblings('div.hidden-article').fadeToggle('fast').css('display', 'flex');;
-    var buttonText = $(this).children('span').text();
+  jQuery(".view-all-results-btn").click(function(){
+    jQuery(this).siblings('div.hidden-article').fadeToggle('fast').css('display', 'flex');;
+    var buttonText = jQuery(this).children('span').text();
     if (buttonText == 'Show All') {
-    	$(this).children('span').text('Hide All');
+    	jQuery(this).children('span').text('Hide All');
     } else if(buttonText == 'Hide All') {
-    	$(this).children('span').text('Show All');
+    	jQuery(this).children('span').text('Show All');
     }
   });
 });

@@ -2,6 +2,7 @@
     <div class="container">
       <div class="row align-items-center py-8">
        <div class="col-md-6">
+        {% if article.category.name != "General Information" %}
          {% element 'secondary_nav' %}
           {
            "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
@@ -11,6 +12,16 @@
                            { "label": "{{ article.title | escape_once }}", "url":"{{ article.url }}" }]
           }
          {% endelement %}
+        {% else %}
+          {% element 'secondary_nav' %}
+            {
+              "breadcrumbs": [{ "label":"{{ 'portal_translations.header.tabs.home' | t }}", "url":"{{portal.home_url}}" },
+                              { "label": "{{ article.category.name | escape_once }}", "url":"{{ article.category.url }}" },
+                              { "label": "{{ article.folder.name | escape_once }}", "url":"{{ article.folder.url }}" },
+                              { "label": "{{ article.title | escape_once }}", "url":"{{ article.url }}" }]
+            }
+          {% endelement %}
+        {% endif %}
         </div>
         <div class="col-md-4 ms-auto">
           {{ portal | search_element }}

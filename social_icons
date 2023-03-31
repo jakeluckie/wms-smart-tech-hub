@@ -1,0 +1,38 @@
+<div class="social-icon-container">
+    <a href="https://www.facebook.com/WaikatoMilkingSystems">
+        <img class="social-icon"
+            data-src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/facebook.svg"
+            loading="lazy" alt="wms facebook"
+            src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/facebook.svg" />
+    </a>
+    <a href="https://www.youtube.com/@WaikatoMilkingNZ">
+        <img class="social-icon"
+            data-src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/youtube.svg"
+            loading="lazy" alt="wms youtube"
+            src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/youtube.svg" />
+    </a>
+    <a href="https://linkedin.com/company/waikato-milking-systems">
+        <img class="social-icon"
+            data-src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/linkedin.svg"
+            loading="lazy" alt="wms linkedin"
+            src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/linkedin.svg" />
+    </a>
+    <a href="https://twitter.com/WaikatoMilking">
+        <img class="social-icon"
+            data-src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/twitter.svg"
+            loading="lazy" alt="wms twitter"
+            src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/twitter.svg" />
+    </a>
+    <a href="https://www.instagram.com/waikatomilking/">
+        <img class="social-icon"
+            data-src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/instagram.svg"
+            loading="lazy" alt="wms instagram"
+            src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/instagram.svg" />
+    </a>
+    <a href="https://www.tiktok.com/@waikatomilking">
+        <img class="social-icon"
+            data-src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/tiktok.svg"
+            loading="lazy" alt="wms tiktok"
+            src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/social/tiktok.svg" />
+    </a>
+</div>

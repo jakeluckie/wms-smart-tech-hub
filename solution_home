@@ -27,7 +27,7 @@
     <div class="container">
         {% assign folder_count = 0 %}
         {% for category in portal.solution_categories %}
-          {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Effluent' %}
+          {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Dairy Effluent' %}
             <section class="row category-section-wrapper mx-0 g-0 bg-light">
               <div class="section-heading-container">
                 <div class="category-title-wrapper"> 
@@ -52,6 +52,8 @@
                             {% assign article_link_class = "article-link article-link-obsolete" %}
                           {% elsif entity.name == "Diagrams" %}
                             {% assign article_link_class = "article-link article-link-diagram" %}
+                          {% elsif entity.name == "How-to" %}
+                            {% assign article_link_class = "article-link article-link-howto" %}
                           {% else %}
                             {% assign article_link_class = "article-link" %}
                           {% endif %}
@@ -118,7 +120,7 @@
     <div class="container">
       {{page_message}}
       {% for category in portal.solution_categories %}
-      {% if category.name == "FAQ's" or category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Effluent' or category.name == 'Manuals' or category.name == 'Gallery' or category.name == 'Technical Bulletins and Product Updates' or category.name == 'General' or category.name == 'Dairy Effluent' %}
+      {% if category.name == "FAQs" or category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Effluent' or category.name == 'Manuals' or category.name == 'Gallery' or category.name == 'Technical Bulletins and Product Updates' or category.name == 'General' or category.name == 'Dairy Effluent' %}
       {% comment %}  DO NOTHING 
     {% endcomment %}
       {% else %}
@@ -191,5 +193,72 @@
         {% endif %}
       {% endif %}
       {% endfor %}
+    </div>
+
+    <div class="container">
+        {% for category in portal.solution_categories %}
+          {% case category.name %}
+            {% when "Animal Management" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/33-Animal-Management.svg" %}
+            {% when "General Components" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/181-General-Components.svg" %}
+            {% when "Hygiene & Sanitisation" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/34-Animal-Hygiene.svg" %}
+            {% when "Milk Handling" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/31-Milk-Handling.svg" %}
+            {% when "Milk Room" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/36-Milk-Room.svg" %}
+            {% when "Milk Storage & Cooling" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/32-Milk-Storage-and-Cooling.svg" %}
+            {% when "Milking Point" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/30-Milking-point.svg" %}
+            {% when "Rotary Platform" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/185-Rotary-Platform.svg" %}
+            {% when "Systems" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/186-Systems.svg" %}
+            {% when "Dairy Effluent" %}
+              {% assign icon_url = "https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/icons/180-Dairy-Effluent.svg" %}
+            {% endcase %}
+
+          {% if category.name == 'Animal Management' or category.name == 'General Components' or category.name == 'Hygiene & Sanitisation' or category.name == 'Milk Handling' or category.name == 'Milk Room' or category.name == 'Milk Storage & Cooling' or category.name == 'Milking Point' or category.name == 'Rotary Platform' or category.name == 'Systems' or category.name == 'Dairy Effluent' %}
+            <section class="row category-section-wrapper mx-0 g-0 bg-light">
+              <a href="{{ category.url }}">
+              <div class="sp-section-heading-container">
+                <div class="fw-category-icon">
+                <img
+                  class="sp-category-icon"
+                  data-src="{{ icon_url }}"
+                  loading="lazy"
+                  alt="category icon"
+                  src="{{ icon_url }}"
+                />
+                </div>
+                <div class="sp-category-title-wrapper"> 
+                  <h4 class="sp-category-title">{{ category.name | escape_once }}</h4>
+                </div>
+              </div>
+              </a>
+              <div class="sp-folder-container">
+                {% assign my_folder_count = 0 %}
+                {% for folder in category.folders %}
+                {% assign my_folder_count = my_folder_count | plus:1 %}
+                  {% if folder.entity_collection.size > 0 %}
+                    <a href="{{ folder.url }}">
+                    <div class="sp-folder-wrapper">
+                      <div class="sp-folder-title-div">
+                        <h5 class="sp-folder-title">{{ folder.name | escape_once }}</h5>
+                        <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/arrow.svg" class="expand-arrow-mobile"/>
+                        {% if category.folders_count > 1 and my_folder_count < category.folders_count %}
+                          <span class="sp-folder-divider"></span>
+                        {% endif %}
+                      </div>
+                    </div>
+                    </a>
+                  {% endif %}
+                  {% endfor %}
+                  </div>
+            </section>
+          {% endif %}
+        {% endfor %}
     </div>
   </section>
