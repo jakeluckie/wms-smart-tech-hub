@@ -45,6 +45,14 @@ jQuery(document).ready(function(){
   jQuery(".article-cntnt-close").click(function(){
     var thisParent = jQuery(this).parent();
     var articleNumber = jQuery(thisParent).parent().attr("class").match(/article-content-(\d+)/)[1] - 1;
+
+    var hasArticleLink = jQuery(this).parents("div.folder-article-result-wrapper").prev().children().hasClass(".article-results-wrapper");
+
+    if (!hasArticleLink) {
+      var articleLink = jQuery(this).parents("div.folder-article-result-wrapper").prev().children(".fv-article-results-wrapper");
+      jQuery(articleLink).children(".article-result:eq("+articleNumber+")").children(".article-link").removeClass('active-article-link');
+    }
+
     var articleLink = jQuery(this).parents("div.folder-article-result-wrapper").prev().children(".article-results-wrapper");
     jQuery(articleLink).children(".article-result:eq("+articleNumber+")").children(".article-link").removeClass('active-article-link');
 
@@ -62,7 +70,6 @@ jQuery(document).ready(function(){
       //element.scrollIntoView({behavior: 'smooth', block: 'center'});
     }
   });
-
   
   jQuery( ".folder-title-div" ).click(function(){
     const arrowImg = jQuery(this).children(".expand-arrow-mobile");

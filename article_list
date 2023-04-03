@@ -44,9 +44,7 @@
       <section class="row category-section-wrapper mx-0 g-0 bg-light">
         <div class="folder-container">
                   {% if folder.entity_collection.size > 0 %}
-                    <div id="article-links-{{ folder_count }}" class="folder-wrapper-single">
-
-
+                    <div id="article-links-1" class="folder-wrapper-single">
                       <div class="fv-article-results-wrapper">
                         {% assign article_count = 0 %}
                         {% for entity in folder.entity_collection %}
@@ -78,7 +76,7 @@
                     </div>
                   {% endif %}
                   
-                  <div id="article-documents-{{ folder_count }}" class="folder-article-result-wrapper">
+                  <div id="article-documents-1" class="folder-article-result-wrapper">
                   {% assign article_count = 0 %}
                   {% for article in folder.articles %}
                   {% assign article_count = article_count | plus:1 %}
