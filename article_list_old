@@ -85,41 +85,29 @@
                         <span class="article-cntnt-title">> Documents for <span>{{ article.title }}</span><a href="{{ article.url }}" class="article-cntnt-details-btn">View Document Page</a></span>
                         <img src="https://waikatomilking.com/assets/3rd-Party-Images/smart-TechHUB/close.svg" class="article-cntnt-close"/>
                       </div>
-                      {% capture my_attachments %}
-                        {% for attachment in article.attachments %}
-                          |{{ attachment.filename }}#{{ attachment.url }}#{{ attachment.size }}#{{ attachment.extension }}
-                        {% endfor %}
-                      {% endcapture %}
-                      
-                      {% assign attachment_count = 0 %}
-                      {% assign sorted_attachments = my_attachments | split: '|' | sort %}
-                      {% for attachment in sorted_attachments %}
-                        {% assign attachment_count = attachment_count | plus:1 %}
-                      
-                        {% if attachment_count > 1 %}
-                          {% assign attachment_items = attachment | split: '#' %}
-                          {% assign attachment_class = 'linkwrap' %}
-                          {% if attachment.filename contains "OBS_" %}
-                            {% assign attachment_class = 'linkwrap obsolete' %}
-                          {% endif %}
+                      {% for attachment in article.attachments %}
+                      {% assign attachment_class = 'linkwrap' %}
+                      {% if attachment.filename contains "OBS_" %}
+                        {% assign attachment_class = 'linkwrap obsolete' %}
+                      {% endif %}
 
-                          <a href="{{ attachment_items[1] }}" target="_self" download class="{{ attachment_class }}" alt="">
-                            <div class="filedownload">
-                              <div class="filedownloaddetails">
-                                <h4 class="filedownloadtitle">{{ attachment_items[0] }}</h4>
-                              </div>
-                              <div class="downloadsize">
-                                <span>{{ attachment_items[2] }}</span>
-                                <span>{{ attachment_items[3] }}</span>
-                              </div>
-                              <div class="downloadbtn">
-                                <p>Download</p>
-                                <img src="https://waikatomilking.com/themes/waikato/images/redesign/icons/download.svg"/>
-                              </div>
-                            </div>
-                          </a>
-                        {% endif %}
-                      {% endfor %}
+                      <a href="{{ attachment.url }}" target="_self" download class="{{ attachment_class }}" alt="">
+                        <div class="filedownload">
+                          <div class="filedownloaddetails">
+                            <h4 class="filedownloadtitle">{{ attachment.filename }}</h4>
+                          </div>
+                          <div class="downloadsize">
+                            <span>{{ attachment.size }}</span>
+                            <span>{{ attachment.extension}}</span>
+                          </div>
+                          <div class="downloadbtn">
+                            <p>Download</p>
+                            <img src="https://waikatomilking.com/themes/waikato/images/redesign/icons/download.svg"/>
+                          </div>
+                        </div>
+                      </a>
+
+                    {% endfor %}
                     </div>
                   {% endfor %}
                   </div>

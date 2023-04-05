@@ -461,6 +461,7 @@ footer .fw-contact-info {
   .downloadsize {
     font-size: 16px !important;
     text-transform: uppercase;
+    color: #4a4a4a;
     font-weight: 400;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -473,8 +474,22 @@ footer .fw-contact-info {
   .downloadsize>span {
     width: 4rem;
     font-weight: 400;
-
+    color:#4a4a4a;
   }
+
+  .linkwrap:hover .filedownloaddetails>h4 {
+    color:black !important;
+    font-style: italic;
+  }
+  
+  .linkwrap:hover .filedownload {
+    background-color:#edf0f0;
+  }
+  
+  .linkwrap:hover .downloadbtn {
+    background-color:#d3770d;
+  }
+  
 
   .filedownloadtitle {
     font-size: 16px !important;
