@@ -170,7 +170,7 @@ h1.fw-page-title {
 
 .fw-searchbar-wrapper .breadcrumb .breadcrumb-item:before {
   content: "";
-  background: url(https://waikatomilking.com/themes/waikato/images/redesign/icons/breadcrumbs-arrow-white.svg);
+  background: url(https://waikatomilking.com/images/icons/breadcrumbs-arrow-white.svg);
   background-repeat: no-repeat;
   font-size: .5rem;
   transform: none;
